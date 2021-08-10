@@ -1,0 +1,29 @@
+প্যাটার্নের মূল উদ্দেশ্যই হল লুজলি কাপল আর্কিটেকচার ইমপ্লিমেন্ট করা যাতে করে একটা ভাল মানের অ্যাপ তৈরি করা যায়।
+
+ডিপেন্ডেন্সি ইনজেকশন ডিজাইন প্যাটার্ন হল S.O.L.I.D Principle এর D যার পূর্ণ অর্থ Dependency 
+Inversion Principle (DIP) যেটি Inversion of Control (IoC) কে অনুসরণ করে।
+
+এখানে Dependency Inversion Principle বলতে Decoupling করাকে বুঝানো হয় আর Inversion of Control
+ বলতে কিভাবে ডিপেন্ডেন্সি রিজল্ভ করা হবে সেটিকে বুঝায়। ডিপেন্ডেন্সি রিজল্ভ করতে
+ Dependency Injection (DI) Container বা Inversion of Control (IoC) Container ব্যাবহৃত হয়ে থাকে।
+
+ডিপেন্ডেন্সি প্রধানত তিন ভাবে ইনজেক্ট করা যায়।
+
+১. কন্সট্রাক্টর ইনজেকশনঃ যা কনস্ট্রাক্টরের মাধ্যমে ইঞ্জেক্ট করা হয়।
+public function __construct(MySqlAdapter $adapter)
+{
+    $this->adapter = $adapter;
+}
+
+২. সেটার ইনজেকশনঃ যা কোন মেথডের প্যারামিটারে ইঞ্জেক্ট করা হয়।
+public function setterMethod(MySqlAdapter $adapter)
+{
+    $this->adapter = $adapter;
+}
+
+৩. ইন্টারফেইস ইনজেকশনঃ ইন্টারফেইসকে কোন কনস্ট্রাক্টরে অথবা সেটার মেথডে ইঞ্জেক্ট করা হয়।
+
+public function __construct(AdapterInterface $adapter)
+{
+    $this->adapter = $adapter;
+}
