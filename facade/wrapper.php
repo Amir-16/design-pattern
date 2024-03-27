@@ -1,54 +1,25 @@
 <?php
 
-class Cart
-{
-    public function addProducts($products)
-    {
-        // Product adding codes goes here
-    }
+require_once "Facade/Cart.php";
 
-    public function getProducts()
-    {
-        // Product retrieval codes goes here
-    }
-}
+require_once "Facade/Order.php";
 
-class Order
-{
-    public function process($products)
-    {
-        // Order processing codes goes here
-    }
-}
+require_once "Facade/Payment.php";
 
-class Payment
-{
-    public function charge($charge)
-    {
-        // Additional charge codes goes here
-    }
-
-    public function makePayment()
-    {
-        // Payment method verify & payment codes goes here
-    }
-}
-
-class Shipping
-{
-    public function calculateCharge()
-    {
-        // Calculation codes goes here
-    }
-
-    public function shipProducts()
-    {
-        // Ship process codes goes here
-    }
-}
+require_once "Facade/Shipping.php";
 
 class CustomerFacade
 {
+    public $cart;
+
+    public $order;
+
+    public $payment;
+
+    public $shipping;
+
+    public $totalAmount;
+
     public function __construct()
     {
         $this->cart = new Cart;
@@ -59,7 +30,7 @@ class CustomerFacade
 
     public function addToCart($products)
     {
-        $this->cart->addProducts($products);
+       return $this->cart->addProducts($products);
     }
 
     public function checkout()
@@ -96,5 +67,6 @@ $products = [
 ];
 
 $customer->addToCart($products);
+
 $customer->checkout();
 $customer->makePayment();

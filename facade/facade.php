@@ -10,7 +10,7 @@ class Person
 
 class PersonFacade
 {
-    static $instance;
+   public static $instance;
 
     public static function __callStatic($method, $args)
     {
