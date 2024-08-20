@@ -1,5 +1,4 @@
 <?php
-
 class Model implements \SplSubject
 {
     protected $observers;
